@@ -1,5 +1,9 @@
 package com.bah.msd.mcc.repository;
 
-public class EventRepository {
+import org.springframework.data.repository.CrudRepository;
+
+import com.bah.msd.mcc.domain.Event;
+
+public interface EventRepository extends CrudRepository<Event, Long> {
 
 }
