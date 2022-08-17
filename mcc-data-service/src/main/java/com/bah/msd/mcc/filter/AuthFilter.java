@@ -25,7 +25,7 @@ public class AuthFilter implements Filter{
 
 	//public static Key key = Keys.secretKeyFor(SignatureAlgorithm.HS256);
 	private String auth_scope = "com.webage.auth.apis";
-	private String api_scope = "com.webage.data.apis";
+	private String api_scope = "com.bah.msd.mcc.data.apis";
 	@Override
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain)
 			throws IOException, ServletException {
@@ -58,6 +58,7 @@ public class AuthFilter implements Filter{
 			String authheader = req.getHeader("authorization");
 			if(authheader != null && authheader.length() > 7 && authheader.startsWith("Bearer")) {
 				String jwt_token = authheader.substring(7, authheader.length());
+				System.out.println(jwt_token);
 				if(JWTHelper.verifyToken(jwt_token)) {
 					String request_scopes = JWTHelper.getScopes(jwt_token);
 					if(request_scopes.contains(api_scope) || request_scopes.contains(auth_scope)) {
