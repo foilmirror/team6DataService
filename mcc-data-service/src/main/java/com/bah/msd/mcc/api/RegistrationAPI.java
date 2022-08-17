@@ -42,7 +42,7 @@ public class RegistrationAPI {
 	@PostMapping
 	public ResponseEntity<?> addRegistration(@RequestBody Registration newRegistration, UriComponentsBuilder uri) {
 		//  Workshop:  Implementation to add a new registration; think about data validation and error handling.
-		if (newRegistration.getId()!=0 || newRegistration.getEventId() == 0 || newRegistration.getCustomerId() == 0) { 
+		if (newRegistration.getId()!=0 || newRegistration.getEvent_id() == 0 || newRegistration.getCustomer_id() == 0) { 
 			return ResponseEntity.badRequest().build();
 		}
 		newRegistration=repo.save(newRegistration);
@@ -57,7 +57,7 @@ public class RegistrationAPI {
 			@PathVariable("eventId") long eventId) 
 	{
 		// Workshop: Implementation to update an event. Think about error handling.
-		if (newRegistration.getId()!=eventId || newRegistration.getEventId()==0 || newRegistration.getCustomerId() == 0) {
+		if (newRegistration.getId()!=eventId || newRegistration.getEvent_id()==0 || newRegistration.getCustomer_id() == 0) {
 			return ResponseEntity.badRequest().build();
 		}
 		newRegistration=repo.save(newRegistration);

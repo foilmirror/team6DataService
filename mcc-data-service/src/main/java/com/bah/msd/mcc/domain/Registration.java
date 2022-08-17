@@ -19,19 +19,20 @@ public class Registration {
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	long id;
-	
+
 	@Column(name="EVENT_ID")
-	int eventId;
+	int event_id;
 	
 	@Column(name="CUSTOMER_ID")
-	int customerId;
+	int customer_id;
 	
 	@Column(name="REGISTRATION_DATE")
-	Date regDate;
+	Date registration_date;
 	
 	@Column(name="NOTES")
 	String notes;
 	
+
 	public long getId() {
 		return id;
 	}
@@ -40,28 +41,28 @@ public class Registration {
 		this.id = id;
 	}
 
-	public int getEventId() {
-		return eventId;
+	public int getEvent_id() {
+		return event_id;
 	}
 
-	public void setEventId(int eventId) {
-		this.eventId = eventId;
+	public void setEvent_id(int event_id) {
+		this.event_id = event_id;
 	}
 
-	public int getCustomerId() {
-		return customerId;
+	public int getCustomer_id() {
+		return customer_id;
 	}
 
-	public void setCustomerId(int customerId) {
-		this.customerId = customerId;
+	public void setCustomer_id(int customer_id) {
+		this.customer_id = customer_id;
 	}
 
-	public Date getRegDate() {
-		return regDate;
+	public Date getRegistration_date() {
+		return registration_date;
 	}
 
-	public void setRegDate(Date regDate) {
-		this.regDate = regDate;
+	public void setRegistration_date(Date registration_date) {
+		this.registration_date = registration_date;
 	}
 
 	public String getNotes() {
@@ -71,6 +72,5 @@ public class Registration {
 	public void setNotes(String notes) {
 		this.notes = notes;
 	}
-
 	
 }
