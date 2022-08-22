@@ -4,11 +4,15 @@ node {
     }
     
     stage ("Gradle Build - DataService") {
-        sh 'gradle clean build'
+        dir('mcc-data-service') {
+        	sh 'gradle clean build'
+        }
     }
     
     stage ("Gradle Bootjar-Package - DataService") {
-        sh 'gradle bootjar'
+        dir('mcc-data-service') {
+        	sh 'gradle bootjar'
+        }
     }
     
     stage('User Acceptance Test - DataService') {
@@ -19,8 +23,10 @@ node {
 	
 	  if(response=="Yes") {
 	    stage('Release - DataService') {
-	      sh 'gradle build -x test'
-	      sh 'echo Release this version'
+		    dir('mcc-data-service') {
+		      sh 'gradle build -x test'
+		      sh 'echo Release this version'
+	      	}
 	    }
 	  }
     }
