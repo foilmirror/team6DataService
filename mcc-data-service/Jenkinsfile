@@ -1,6 +1,6 @@
 node {
     stage ("Checkout DataService"){
-        git branch: 'main', url: 'https://github.com/foilmirror/team6dataservice_day2'
+        git branch: 'main', url: 'https://github.com/foilmirror/team6DataService'
     }
     
     stage ("Gradle Build - DataService") {
@@ -14,6 +14,19 @@ node {
         	sh 'gradle bootjar'
         }
     }
+    
+    stage ("Containerize the app-docker build - DataService") {
+        sh 'docker build --rm -t event-data:v1.0 .'
+    }
+    
+    stage ("Inspect the docker image - DataService"){
+        sh "docker images event-data:v1.0"
+        sh "docker inspect event-data:v1.0"
+    }
+    
+    stage ("Run Docker container instance - DataService"){
+        sh "docker run -d --rm --name event-data -p 8080:8080 event-data:v1.0"
+     }
     
     stage('User Acceptance Test - DataService') {
 	
@@ -29,5 +42,11 @@ node {
 	      	}
 	    }
 	  }
+    }
+    
+    stage("Production Deployment View"){
+        sh "kubectl get deployments"
+        sh "kubectl get pods"
+        sh "kubectl get services"
     }
 }
